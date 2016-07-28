@@ -1,20 +1,20 @@
 # React-ProseMirror demo
 ## About this
 
-This is not a fork of react-prosemirror. This is a different react
+This is not a fork of megadraft-demo. This is a different react
 wrapper of prosemirror that handles change events and cursors synchronously
 to make it easy to do real-time collaboration in a redux architecture.
 
 ## Usage
 ```
-npm install @episodeyang/react-prosemirror
+npm install @episodeyang/megadraft-demo
 ```
 
 ### How is this README written:
 
 This readme is written with react and markdown. It includes:
 
-1. a **live react-prosemirror component demo**
+1. a **live megadraft-demo component demo**
 2. a table of the component's props that is generated automatically
 3. **source** of the example component
 
@@ -36,9 +36,9 @@ This react component does that.
 ### Live Demo
 
 please see this live demo here:
-http://www.episodeyang.com/react-prosemirror
+http://www.episodeyang.com/megadraft-demo
 
-[![react-prosemirror demo](react-prosemirror-demo.gif)](http://www.episodeyang.com/react-prosemirror)
+[![megadraft-demo demo](megadraft-demo-demo.gif)](http://www.episodeyang.com/megadraft-demo)
 
 ## Develop
 

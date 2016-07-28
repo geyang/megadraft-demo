@@ -73,6 +73,7 @@ var any = _react.PropTypes.any;
 var func = _react.PropTypes.func;
 var bool = _react.PropTypes.bool;
 var string = _react.PropTypes.string;
+var node = _react.PropTypes.node;
 var oneOf = _react.PropTypes.oneOf;
 
 /**
@@ -92,22 +93,6 @@ var ProseMirror = (_class = (_temp = _class2 = function (_Component) {
     key: 'componentWillMount',
     value: function componentWillMount() {
       this.setState({ currentIndex: 0 });
-    }
-  }, {
-    key: '_mountEditor',
-    value: function _mountEditor() {
-      var _props2 = this.props;
-      var doc = _props2.doc;
-      var options = _props2.options;
-
-      this.editorNode = this.refs.editorNode;
-      this.editor = new _prosemirror2.default.ProseMirror(_extends({
-        place: this.editorNode,
-        schema: _schemaBasic.schema,
-        doc: doc
-      }, options));
-      this.editor.on.change.add(this.onChange);
-      this.editor.on.selectionChange.add(this.onSelectionChange);
     }
   }, {
     key: 'componentDidMount',
@@ -143,38 +128,44 @@ var ProseMirror = (_class = (_temp = _class2 = function (_Component) {
       Array.prototype.slice.call(this.editorNode.childNodes).map(this.editorNode.removeChild.bind(this.editorNode));
     }
   }, {
+    key: '_mountEditor',
+    value: function _mountEditor() {
+      console.log('editor is updated ============0--------==========----==========');
+      var _props2 = this.props;
+      var doc = _props2.doc;
+      var options = _props2.options;
+
+      this.editorNode = this.refs.editorNode;
+      this.editor = new _prosemirror2.default.ProseMirror(_extends({
+        place: this.editorNode,
+        schema: _schemaBasic.schema,
+        doc: doc
+      }, options));
+      this.editor.on.change.add(this.onChange);
+      this.editor.on.selectionChange.add(this.onSelectionChange);
+    }
+  }, {
     key: '_updateEditor',
     value: function _updateEditor(doc, selection) {
       this._silent = true;
       this.editor.setDoc(this.editor.schema.nodeFromJSON(doc));
-      var end = selection.from;
-      if (end === selection.head) end = selection.to;
-      this.editor.setTextSelection(end, selection.head);
+      this.editor.setTextSelection(selection.anchor, selection.head);
       this.editor.flush();
       this._silent = false;
     }
   }, {
     key: 'onChange',
-    value: function onChange() {
-      // if (this._silent) return;
-      // const {onChange} = this.props;
-      // const {from, to} = this.editor.selection;
-      // if (onChange) onChange(
-      //   this.editor.doc.toJSON(),
-      //   {from, to}
-      // );
-    }
+    value: function onChange() {}
   }, {
     key: 'onSelectionChange',
     value: function onSelectionChange() {
       if (this._silent) return;
       var onChange = this.props.onChange;
       var _editor$selection = this.editor.selection;
-      var from = _editor$selection.from;
-      var to = _editor$selection.to;
+      var anchor = _editor$selection.anchor;
       var head = _editor$selection.head;
 
-      if (onChange) onChange(this.editor.doc.toJSON(), { from: from, to: to, head: head });
+      if (onChange) onChange(this.editor.doc.toJSON(), { anchor: anchor, head: head });
     }
   }, {
     key: 'render',
@@ -185,21 +176,26 @@ var ProseMirror = (_class = (_temp = _class2 = function (_Component) {
       var onChange = _props3.onChange;
       var options = _props3.options;
       var children = _props3.children;
+      var component = _props3.component;
 
-      var _props = _objectWithoutProperties(_props3, ['doc', 'selection', 'onChange', 'options', 'children']);
+      var _props = _objectWithoutProperties(_props3, ['doc', 'selection', 'onChange', 'options', 'children', 'component']);
 
-      return _react2.default.createElement('div', _extends({ ref: 'editorNode' }, _props));
+      var Component = component;
+      return _react2.default.createElement(Component, _extends({ ref: 'editorNode' }, _props));
     }
   }]);
 
   return ProseMirror;
 }(_react.Component), _class2.propTypes = {
+  /** a wrapper component */
+  component: node,
   doc: any,
   selection: any,
   onChange: func,
   options: any
 }, _class2.defaultProps = {
-  options: {}
+  options: {},
+  component: 'div'
 }, _temp), (_applyDecoratedDescriptor(_class.prototype, 'onChange', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'onChange'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onSelectionChange', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'onSelectionChange'), _class.prototype)), _class);
 exports.default = ProseMirror;
 ;
@@ -216,6 +212,8 @@ exports.default = ProseMirror;
   __REACT_HOT_LOADER__.register(bool, 'bool', 'src/ProseMirror.js');
 
   __REACT_HOT_LOADER__.register(string, 'string', 'src/ProseMirror.js');
+
+  __REACT_HOT_LOADER__.register(node, 'node', 'src/ProseMirror.js');
 
   __REACT_HOT_LOADER__.register(oneOf, 'oneOf', 'src/ProseMirror.js');
 

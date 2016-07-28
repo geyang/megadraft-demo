@@ -7,33 +7,33 @@ import Markdown from "react-markdownit";
 import Highlight from "@episodeyang/react-highlight.js";
 import PropsTable from "react-component-props-table";
 
-import ProseMirrorExample from "../ProseMirror.example";
-import ProseMirrorSource from "!!raw!../ProseMirror.example";
-import ProseMirrorAST from "!!react-docgen!../ProseMirror";
+import MegaDraftExample from "../MegaDraft.example";
+import MegaDraftSource from "!!raw!../MegaDraft.example";
+// import MegaDraftAST from "!!react-docgen!../MegaDraft";
 
-export default function Readme({}) {
+export default function Readme() {
   return (
     <Markdown stripIndent={true}>
       {`
-      # React-ProseMirror demo
+      # React-MegaDraft demo
 
       ## About this
 
-      This is not a fork of react-prosemirror. This is a different react
+      This is not a fork of megadraft-demo. This is a different react
       wrapper of prosemirror that handles change events and cursors synchronously
       to make it easy to do real-time collaboration in a redux architecture.
       
       ## Usage
       `}
-      <Highlight>{`npm install @episodeyang/react-prosemirror`}</Highlight>
+      <Highlight>{`npm install @episodeyang/megadraft-demo`}</Highlight>
       {`
       ### How is this README written:
       This readme is written with react and markdown. It includes:
-      1. a **live react-prosemirror component demo**
+      1. a **live megadraft-demo component demo**
       2. a table of the component's props that is generated automatically
       3. **source** of the example component
 
-      ## Example Component: \`ProseMirror\`
+      ## Example Component: \`MegaDraft\`
       This component provides both the selection and the serialized document json object
       \`onChange\`.
 
@@ -50,14 +50,11 @@ export default function Readme({}) {
       `}
       ### Props
       {`This table below is generated automatically`}
-      <div className="table-container horizontal-scroll flex-column center">
-        <PropsTable propMetaData={ProseMirrorAST.props}/>
-      </div>{`
       ### Demo
-
+      {`
       Below is a live demo. You can open the Chrome React developer tool to look at the updated props.
       `}
-      <ProseMirrorExample/>
+      <MegaDraftExample/>
       {`
       ### Known Issues
 
@@ -67,7 +64,7 @@ export default function Readme({}) {
       ### Usage Example
 
       The source code below of the example above is loaded using the webpack raw loader.`}
-      <Highlight>{ProseMirrorSource}</Highlight>
+      <Highlight>{MegaDraftSource}</Highlight>
       {`
       ## Develop
 

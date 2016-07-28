@@ -46,13 +46,13 @@ function Readme(_ref) {
   return _react2.default.createElement(
     _reactMarkdownit2.default,
     { stripIndent: true },
-    "\n      # React-ProseMirror demo\n      ## Usage\n      ",
+    "\n      # React-ProseMirror demo\n\n      ## About this\n\n      This is not a fork of megadraft-demo. This is a different react\n      wrapper of prosemirror that handles change events and cursors synchronously\n      to make it easy to do real-time collaboration in a redux architecture.\n      \n      ## Usage\n      ",
     _react2.default.createElement(
       _reactHighlight2.default,
       null,
-      "npm install @episodeyang/react-prosemirror"
+      "npm install @episodeyang/megadraft-demo"
     ),
-    "\n      ### How is this README written:\n      This readme is written with react and markdown. It includes:\n      1. a **live react-prosemirror component demo**\n      2. a table of the component's props that is generated automatically\n      3. **source** of the example component\n\n      ## Example Component: `ProseMirror`\n      This component provides both the selection and the serialized document json object\n      `onChange`.\n\n      ### Why is this important?\n      With an input element like this rich text editor, the cursor position (\"selection\") is part of the component\n      state. Typically when we think of updating the value of such a component we only think of updating\n      the content. However if we do that, the cursor position will be lost each time when such update happens,\n      and the user will notice that the cursor jumps to the beginning of the input box on every keystroke.\n\n      With redux's synchronous loop, it is necessary for the component to handle document value change and\n      selection changes together.\n\n      This react component does that.\n      ",
+    "\n      ### How is this README written:\n      This readme is written with react and markdown. It includes:\n      1. a **live megadraft-demo component demo**\n      2. a table of the component's props that is generated automatically\n      3. **source** of the example component\n\n      ## Example Component: `ProseMirror`\n      This component provides both the selection and the serialized document json object\n      `onChange`.\n\n      ### Why is this important?\n      With an input element like this rich text editor, the cursor position (\"selection\") is part of the component\n      state. Typically when we think of updating the value of such a component we only think of updating\n      the content. However if we do that, the cursor position will be lost each time when such update happens,\n      and the user will notice that the cursor jumps to the beginning of the input box on every keystroke.\n\n      With redux's synchronous loop, it is necessary for the component to handle document value change and\n      selection changes together.\n\n      This react component does that.\n      ",
     "### Props",
     "This table below is generated automatically",
     _react2.default.createElement(
@@ -68,7 +68,7 @@ function Readme(_ref) {
       null,
       _ProseMirror4.default
     ),
-    "\n      ## Develop\n\n      1. First make your changes, then git commit. Use `serve-docs` to view live update at [http://localhost:5000](http://localhost:5000).\n      2. run `build-docs`, `build-static-docs`, `gh-pages`\n      3. Then remember to push to master.\n\n      "
+    "\n      ## Develop\n\n      1. first run `npm install`\n      2. now install prosemirror. Because it is a peer dependency, you need to\n         install it separately.\n\n        ~~~shell\n        npm install prosemirror\n        ~~~\n      3. Now make your changes, then git commit. Use `serve-docs` to view live update at [http://localhost:5000](http://localhost:5000).\n      4. run `build-docs`, `build-static-docs`, `gh-pages`\n      5. Then remember to push to master.\n      "
   );
 }
 ;
