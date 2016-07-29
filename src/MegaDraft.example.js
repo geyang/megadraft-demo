@@ -2,9 +2,11 @@
  * Created by ge on 6/23/16.
  */
 import React, {Component, PropTypes} from 'react';
-import Highlight from '@episodeyang/react-highlight.js';
+import Highlight from "@episodeyang/react-highlight.js";
 import autobind from 'autobind-decorator';
-import Megadraft, {editorStateFromRaw} from 'megadraft';
+import {ContentState, convertFromRaw} from 'draft-js';
+import Megadraft, {editorStateFromRaw, editorStateToJSON} from 'megadraft';
+import {stateToMarkdown} from 'draft-js-export-markdown';
 import 'megadraft/dist/css/megadraft.css';
 
 var {number, string} = PropTypes;
@@ -25,15 +27,25 @@ export default class ProseMirrorExample extends Component {
 
   @autobind
   onChange(editorState) {
-    console.log('on change! ', editorState);
-    this.setState({editorState})
+    let rawState = editorStateToJSON(editorState);
+    console.log('raw state ', rawState);
+    let blockArray = convertFromRaw(JSON.parse(rawState));
+    console.log('blockArray', blockArray);
+    let markdown = stateToMarkdown(blockArray);
+    console.log('markdown', markdown);
+    this.setState({editorState: editorState, markdown});
   }
 
   render() {
-    const {editorState} = this.state;
+    const {editorState, markdown} = this.state;
     return (
-      <div style={style}>
-        <Megadraft editorState={editorState} onChange={this.onChange}/>
+      <div>
+        <div style={style}>
+          <Megadraft editorState={editorState} onChange={this.onChange}/>
+        </div>
+        <Highlight>
+          {markdown}
+        </Highlight>
       </div>
     );
   }

@@ -19,10 +19,8 @@ export default function Readme() {
 
       ## About this
 
-      This is not a fork of megadraft-demo. This is a different react
-      wrapper of prosemirror that handles change events and cursors synchronously
-      to make it easy to do real-time collaboration in a redux architecture.
-      
+      This is a demo page for megadraft.
+
       ## Usage
       `}
       <Highlight>{`npm install @episodeyang/megadraft-demo`}</Highlight>
@@ -34,19 +32,6 @@ export default function Readme() {
       3. **source** of the example component
 
       ## Example Component: \`MegaDraft\`
-      This component provides both the selection and the serialized document json object
-      \`onChange\`.
-
-      ### Why is this important?
-      With an input element like this rich text editor, the cursor position ("selection") is part of the component
-      state. Typically when we think of updating the value of such a component we only think of updating
-      the content. However if we do that, the cursor position will be lost each time when such update happens,
-      and the user will notice that the cursor jumps to the beginning of the input box on every keystroke.
-
-      With redux's synchronous loop, it is necessary for the component to handle document value change and
-      selection changes together.
-
-      This react component does that.
       `}
       ### Props
       {`This table below is generated automatically`}
