@@ -6,6 +6,7 @@ import Highlight from "@episodeyang/react-highlight.js";
 import autobind from 'autobind-decorator';
 import {ContentState, convertFromRaw} from 'draft-js';
 import Megadraft, {editorStateFromRaw, editorStateToJSON} from 'megadraft';
+import {stateFromMarkdown} from 'draft-js-import-markdown';
 import {stateToMarkdown} from 'draft-js-export-markdown';
 import 'megadraft/dist/css/megadraft.css';
 
