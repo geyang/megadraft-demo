@@ -4,7 +4,7 @@
 import React, {Component, PropTypes} from 'react';
 import Highlight from "@episodeyang/react-highlight.js";
 import autobind from 'autobind-decorator';
-import {ContentState, convertFromRaw} from 'draft-js';
+import {EditorState, ContentState, convertFromRaw} from 'draft-js';
 import Megadraft, {editorStateFromRaw, editorStateToJSON} from 'megadraft';
 import {stateFromMarkdown} from 'draft-js-import-markdown';
 import {stateToMarkdown} from 'draft-js-export-markdown';
@@ -20,10 +20,22 @@ const style = {
   boxShadow: '0 0 24px pink'
 };
 
+const placeholderMarkdown = `
+# What is your story today?
+
+## Megadraft is an editor built with Draft.js
+
+It allows you to write as if you are on [medium](https://www.medium.com). To style the text, try **highlight** a portion of the text. Currently we allow a few built-in inline styles and lists:
+
+1. inline styles: bold, italic (emphasis)
+2. links [like this](http://www.episodeyang.com)
+3. lists, both ordered and unordered.
+`;
 export default class ProseMirrorExample extends Component {
   componentWillMount() {
-    const editorState = editorStateFromRaw(null);
-    this.setState({editorState})
+    // const editorState = editorStateFromRaw(null);
+    const editorState = EditorState.createWithContent(stateFromMarkdown(placeholderMarkdown));
+    this.setState({editorState, markdown: placeholderMarkdown})
   }
 
   @autobind
